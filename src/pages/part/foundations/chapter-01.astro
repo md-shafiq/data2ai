@@ -1,56 +1,1661 @@
 ---
 import BookLayout from "../../../layouts/BookLayout.astro";
+
+const title = "What is Data? Introduction to Data Analytics";
+const description =
+  "ডাটা কী, Data Analytics কীভাবে ব্যবসা ও প্রযুক্তিতে ব্যবহৃত হয় এবং কেন এটি গুরুত্বপূর্ণ।";
+
+const objectives = [
+  "Data-এর মৌলিক ধারণা ব্যাখ্যা করতে পারা",
+  "বাস্তব জীবনের Data-এর উদাহরণ শনাক্ত করা",
+  "Data Analytics-এর প্রাথমিক ধারণা বোঝা",
+  "Business Problem থেকে Analysis Question তৈরি করা",
+  "Data থেকে Business Insight বের করার প্রাথমিক ধারণা অর্জন করা",
+  "Data Analytics থেকে AI Engineering পর্যন্ত শেখার পথ বোঝা",
+];
+
+const terms = [
+  ["Data", "কোনো বিষয় সম্পর্কে সংগৃহীত পর্যবেক্ষণ বা রেকর্ড"],
+  ["Dataset", "সম্পর্কিত Data-এর সংগঠিত সংগ্রহ"],
+  ["Record", "একটি নির্দিষ্ট Data Entry"],
+  ["Field", "একটি Data Attribute বা Column"],
+  ["Data Source", "যেখান থেকে Data সংগ্রহ করা হয়"],
+  ["Database", "Data সংরক্ষণের সংগঠিত ব্যবস্থা"],
+  ["Data Analysis", "Data পরীক্ষা ও বিশ্লেষণের প্রক্রিয়া"],
+  ["Insight", "বিশ্লেষণ থেকে পাওয়া অর্থপূর্ণ উপলব্ধি"],
+  ["Business Problem", "ব্যবসার কোনো সমস্যা বা চ্যালেঞ্জ"],
+  ["Data-driven", "Data-এর ভিত্তিতে পরিচালিত সিদ্ধান্ত"],
+];
+
+const questions = [
+  {
+    question: "Data বলতে কী বোঝায়?",
+    options: [
+      "শুধু সংখ্যা",
+      "কোনো বিষয় সম্পর্কে সংগৃহীত পর্যবেক্ষণ বা রেকর্ড",
+      "শুধু ছবি",
+      "শুধু Database",
+    ],
+    answer: 1,
+    explanation: "Data হলো পর্যবেক্ষণ, পরিমাপ বা রেকর্ড করা তথ্য।",
+  },
+  {
+    question: "একটি Online Shop-এর Order List কী?",
+    options: ["Dataset", "Algorithm", "Operating System", "Programming Language"],
+    answer: 0,
+    explanation: "একাধিক Order Record নিয়ে Order Dataset তৈরি হয়।",
+  },
+  {
+    question: "Data Analysis-এর আগে সবচেয়ে গুরুত্বপূর্ণ কাজ কোনটি?",
+    options: [
+      "Dashboard বানানো",
+      "Model Train করা",
+      "Business Question বোঝা",
+      "Cloud Server কেনা",
+    ],
+    answer: 2,
+    explanation: "কী সমস্যা সমাধান করতে হবে তা আগে নির্ধারণ করতে হয়।",
+  },
+  {
+    question: "নিচের কোনটি Data Analytics-এর ব্যবহার?",
+    options: [
+      "Customer behavior বোঝা",
+      "অন্ধভাবে পণ্য কেনা",
+      "অনুমানের ভিত্তিতে বিজ্ঞাপন চালানো",
+      "Data উপেক্ষা করা",
+    ],
+    answer: 0,
+    explanation: "Customer behavior বিশ্লেষণ Data Analytics-এর একটি বাস্তব ব্যবহার।",
+  },
+  {
+    question: "Revenue এবং Profit-এর মধ্যে পার্থক্য কী?",
+    options: [
+      "দুটো একই",
+      "Profit হিসাব করতে Cost বিবেচনা করা হয়",
+      "Revenue সবসময় Profit-এর চেয়ে কম",
+      "Profit শুধু Order সংখ্যা",
+    ],
+    answer: 1,
+    explanation: "Profit = Revenue - Total Cost।",
+  },
+];
+
+const assignments = [
+  "Data কী, নিজের ভাষায় ব্যাখ্যা করুন।",
+  "Data-এর বাস্তব জীবনের ১০টি উদাহরণ লিখুন।",
+  "একটি ছোট E-commerce Dataset তৈরি করুন।",
+  "প্রতিটি Order-এর Sales Calculation করুন।",
+  "Total Sales এবং Average Order Value বের করুন।",
+  "Best-selling Product এবং Highest Revenue Product আলাদা করে শনাক্ত করুন।",
+  "কমপক্ষে তিনটি Business Insight লিখুন।",
+  "একটি সংক্ষিপ্ত Business Recommendation Report তৈরি করুন।",
+  "আপনার কাজ GitHub Repository-তে সংরক্ষণ করুন।",
+];
 ---
 
-<BookLayout title="Chapter 1 — What is Data?">
+<BookLayout title={title} description={description}>
+  <article class="chapter">
+    <header class="chapter-header">
+      <p class="eyebrow">PART 1 · FOUNDATIONS</p>
+      <p class="chapter-number">CHAPTER 01</p>
+      <h1>{title}</h1>
+      <p class="subtitle">
+        ডাটা কী? Data Analytics কীভাবে ব্যবসা, প্রযুক্তি ও ক্যারিয়ারের ভবিষ্যৎ বদলে দিচ্ছে?
+      </p>
+      <div class="chapter-meta">
+        <span>Beginner Level</span>
+        <span>Reading: 25–35 minutes</span>
+        <span>Author: MD. SHAFIQUL ISLAM</span>
+      </div>
+    </header>
 
-  <p class="mb-3 text-sm text-blue-600">
-    PART 1 / FOUNDATIONS / CHAPTER 1
-  </p>
+    <hr />
 
-  <h1 class="mb-6 text-3xl font-bold">
-    What is Data?
-  </h1>
+    <section>
+      <h2>একটি গল্প দিয়ে শুরু করি: একটি ছোট অনলাইন ব্যবসার সমস্যা</h2>
 
-  <section class="mb-8">
-    <h2 class="mb-3 text-xl font-bold">
-      Learning Objectives
-    </h2>
+      <p>
+        ধরুন, ঢাকায় একজন উদ্যোক্তা অনলাইনে পোশাক বিক্রি করেন। তাঁর একটি
+        Facebook Page এবং একটি E-commerce Website রয়েছে।
+      </p>
 
-    By the end of this chapter, you will understand:
+      <p>
+        প্রতিদিন তিনি অনেক অর্ডার পান। ব্যবসা চলছে, বিক্রিও হচ্ছে। কিন্তু
+        কয়েক মাস পর তিনি কিছু সমস্যার মুখোমুখি হলেন।
+      </p>
 
-    <ul class="mt-3 list-disc space-y-2 pl-6">
-      <li>What data means.</li>
-      <li>Different types of data.</li>
-      <li>Why organizations use data.</li>
-      <li>How Data Analytics creates business value.</li>
-    </ul>
-  </section>
+      <p>তিনি জানতে চান:</p>
 
-  <section class="mb-8">
-    <h2 class="mb-3 text-xl font-bold">
-      Real-world Story
-    </h2>
+      <ul>
+        <li>কোন পোশাকটি সবচেয়ে বেশি বিক্রি হচ্ছে?</li>
+        <li>কোন এলাকায় সবচেয়ে বেশি ক্রেতা রয়েছে?</li>
+        <li>কোন বিজ্ঞাপন থেকে বেশি অর্ডার আসছে?</li>
+        <li>কোন পণ্য মানুষ Cart-এ যোগ করেও কিনছে না?</li>
+        <li>কোন সময়ে বিক্রি বেশি হচ্ছে?</li>
+        <li>বিক্রি বাড়লেও প্রকৃত লাভ বাড়ছে কি না?</li>
+      </ul>
 
-    Imagine an online shop receiving 1,000 orders
-    every day. How can its owner discover the best-selling
-    products, customer preferences and lost sales?
+      <p>
+        তাঁর কাছে অনেক তথ্য আছে। কিন্তু তথ্যগুলো বিভিন্ন জায়গায় ছড়িয়ে
+        আছে। কিছু তথ্য Excel-এ, কিছু Facebook Ads Manager-এ, কিছু Website
+        Database-এ, আর কিছু কাগজের খাতায়।
+      </p>
 
-    The answer begins with data.
-  </section>
+      <p>
+        একদিন তিনি একজন Data Analyst-এর সাহায্য নিলেন। Data Analyst
+        বিভিন্ন উৎস থেকে বিক্রির তথ্য সংগ্রহ করে একটি রিপোর্ট তৈরি করলেন।
+      </p>
 
-  <section class="mb-8 rounded-xl bg-blue-50 p-6">
-    <h2 class="mb-3 text-xl font-bold">
-      Knowledge Check
-    </h2>
+      <p>রিপোর্টে দেখা গেল:</p>
 
-    <p>What is the primary purpose of Data Analytics?</p>
+      <ol>
+        <li>একটি নির্দিষ্ট পোশাক অন্য পণ্যগুলোর তুলনায় অনেক বেশি বিক্রি হচ্ছে।</li>
+        <li>একটি বিজ্ঞাপন থেকে প্রচুর Website Visitor আসছে, কিন্তু অর্ডার হচ্ছে খুব কম।</li>
+        <li>ঢাকার বাইরের কিছু এলাকায় অর্ডারের সংখ্যা বাড়ছে।</li>
+        <li>কিছু পণ্যের বিক্রি বেশি হলেও সেগুলোর লাভের পরিমাণ তুলনামূলক কম।</li>
+      </ol>
 
-    <button class="mt-4 rounded-lg bg-blue-700
-                   px-4 py-2 text-white"
-            onclick="alert('Think about how data supports better decisions!')">
-      Check the lesson
-    </button>
-  </section>
+      <p>
+        এখন উদ্যোক্তা শুধু অনুমানের ভিত্তিতে সিদ্ধান্ত নিচ্ছেন না। তিনি
+        তথ্যের ভিত্তিতে ব্যবসার সমস্যা বুঝতে এবং উন্নতির পরিকল্পনা করতে
+        পারছেন।
+      </p>
 
+      <blockquote>
+        Data শুধু কিছু সংখ্যা বা লেখা নয়। সঠিকভাবে সংগ্রহ, বিশ্লেষণ ও
+        ব্যবহার করতে পারলে Data বাস্তব সমস্যার সমাধান এবং ভালো সিদ্ধান্ত
+        গ্রহণে সাহায্য করে।
+      </blockquote>
+
+      <p>
+        এই অধ্যায়ে আমরা একেবারে ভিত্তি থেকে বুঝব Data কী, Data Analytics
+        কী এবং কেন একজন Data Professional-এর জন্য এই জ্ঞান অপরিহার্য।
+      </p>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>1. Learning Objectives — এই অধ্যায় শেষে কী শিখবেন?</h2>
+
+      <p>এই অধ্যায় শেষ করার পর আপনি পারবেন:</p>
+
+      <ol>
+        {objectives.map((item) => <li>{item}</li>)}
+      </ol>
+
+      <p>
+        এই অধ্যায়ের উদ্দেশ্য আপনাকে এখনই Advanced Data Analyst বানানো নয়।
+        উদ্দেশ্য হলো এমন একটি ভিত্তি তৈরি করা, যার ওপর পরবর্তী অধ্যায়গুলোর
+        জ্ঞান দাঁড়াবে।
+      </p>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>2. Basic Concepts — Data কী?</h2>
+
+      <h3>2.1 Data-এর সংজ্ঞা</h3>
+
+      <p>
+        Data হলো কোনো ব্যক্তি, বস্তু, ঘটনা, কার্যক্রম বা পরিস্থিতি সম্পর্কে
+        সংগ্রহ করা পর্যবেক্ষণ, পরিমাপ, রেকর্ড বা তথ্যের কাঁচা উপাদান।
+      </p>
+
+      <p><strong>সহজ ভাষায়: Data হলো কোনো ঘটনা বা বিষয় সম্পর্কে সংগ্রহ করা কাঁচা তথ্য।</strong></p>
+
+      <p>ধরুন, একটি দোকানে পাঁচজন ক্রেতা পণ্য কিনলেন:</p>
+
+      <pre><code>{`Customer 1 = 500 BDT
+Customer 2 = 800 BDT
+Customer 3 = 300 BDT
+Customer 4 = 1200 BDT
+Customer 5 = 700 BDT`}</code></pre>
+
+      <p>এগুলো হলো Data। এখন আমরা যদি হিসাব করি:</p>
+
+      <pre><code>{`Total Sales = 500 + 800 + 300 + 1200 + 700
+Total Sales = 3500 BDT`}</code></pre>
+
+      <p>
+        তাহলে Data ব্যবহার করে একটি অর্থপূর্ণ ফলাফল পেলাম। প্রতিটি
+        ক্রয়ের পরিমাণ হলো Data, আর মোট বিক্রির পরিমাণ হলো একটি
+        গণনাকৃত ফলাফল।
+      </p>
+
+      <h3>2.2 Data কোথায় থাকে?</h3>
+
+      <p>আমরা প্রতিদিন অসংখ্য Data তৈরি করি, অনেক সময় বুঝতেও পারি না।</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>ক্ষেত্র</th><th>Data-এর উদাহরণ</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Mobile Phone</td><td>Call history, contacts, app usage</td></tr>
+            <tr><td>E-commerce</td><td>Orders, prices, customers</td></tr>
+            <tr><td>Banking</td><td>Transactions, balance, payments</td></tr>
+            <tr><td>Hospital</td><td>Patient records, test results</td></tr>
+            <tr><td>Education</td><td>Exam results, attendance</td></tr>
+            <tr><td>Social Media</td><td>Likes, comments, shares</td></tr>
+            <tr><td>Software Application</td><td>Logs, API requests, errors</td></tr>
+            <tr><td>Website</td><td>Visitors, page views, clicks</td></tr>
+            <tr><td>Transportation</td><td>GPS location, travel time</td></tr>
+            <tr><td>Business</td><td>Sales, revenue, expenses</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        আপনি যখন একটি Website-এ প্রবেশ করেন, কোনো পণ্যে Click করেন বা
+        Online Payment করেন, তখন বিভিন্ন ধরনের Data তৈরি হতে পারে।
+        সেই Data ব্যবসার কার্যক্রম বুঝতে এবং উন্নত করতে সাহায্য করে।
+      </p>
+
+      <h3>2.3 একটি বাস্তব উদাহরণ: E-commerce Order Data</h3>
+
+      <p>ধরুন, একটি Online Shop-এর তিনটি অর্ডার রয়েছে:</p>
+
+      <pre><code>{`Order ID: 1001
+Customer: Rahim
+Product: Shirt
+Price: 800
+Quantity: 2
+
+Order ID: 1002
+Customer: Karim
+Product: T-Shirt
+Price: 500
+Quantity: 1
+
+Order ID: 1003
+Customer: Salma
+Product: Shirt
+Price: 800
+Quantity: 3`}</code></pre>
+
+      <p>এই Data থেকে আমরা জানতে পারি:</p>
+
+      <ul>
+        <li>কতটি Order হয়েছে?</li>
+        <li>কোন পণ্য কতবার বিক্রি হয়েছে?</li>
+        <li>মোট কত টাকা বিক্রি হয়েছে?</li>
+        <li>কোন Customer কত টাকা খরচ করেছেন?</li>
+      </ul>
+
+      <h3>2.4 Data কেন এত মূল্যবান?</h3>
+
+      <p>একটি প্রতিষ্ঠানের কাছে Data গুরুত্বপূর্ণ সম্পদ, কারণ এটি সাহায্য করে:</p>
+
+      <h4>Understanding — বোঝা</h4>
+      <p>ব্যবসায় আসলে কী ঘটছে, তা বুঝতে সাহায্য করে।</p>
+
+      <h4>Measurement — পরিমাপ</h4>
+      <p>বিক্রি, খরচ, লাভ, গ্রাহকসংখ্যা বা কার্যকারিতা পরিমাপ করা যায়।</p>
+
+      <h4>Decision Making — সিদ্ধান্ত গ্রহণ</h4>
+      <p>কোন পণ্য বাড়ানো উচিত, কোথায় খরচ কমানো উচিত, কোন সমস্যার সমাধান আগে করা উচিত—এসব সিদ্ধান্তে সহায়তা করে।</p>
+
+      <h4>Prediction — পূর্বাভাস</h4>
+      <p>আগের Data বিশ্লেষণ করে ভবিষ্যতে কী ঘটতে পারে, তার সম্ভাব্য ধারণা পাওয়া যায়।</p>
+
+      <h4>Automation — স্বয়ংক্রিয়করণ</h4>
+      <p>Data ব্যবহার করে Fraud Detection, Recommendation এবং Customer Segmentation-এর মতো কাজ স্বয়ংক্রিয় করা যায়।</p>
+
+      <h4>Innovation — নতুন সুযোগ তৈরি</h4>
+      <p>Data বিশ্লেষণ করে নতুন পণ্য, সেবা বা ব্যবসার সুযোগ আবিষ্কার করা যায়।</p>
+
+      <h3>2.5 Data থেকে AI পর্যন্ত যাত্রা</h3>
+
+      <p>
+        এই বইয়ের বড় লক্ষ্য হলো Data Analytics থেকে AI Engineering
+        পর্যন্ত দক্ষতা অর্জন করা। তাই শুরুতেই পুরো যাত্রাটির একটি ধারণা
+        নেওয়া দরকার।
+      </p>
+
+      <ol>
+        <li><strong>Data:</strong> কাঁচা তথ্য সংগ্রহ করা।</li>
+        <li><strong>Data Analysis:</strong> Data পরীক্ষা করে প্রশ্নের উত্তর এবং Business Insight বের করা।</li>
+        <li><strong>Data Engineering:</strong> Data সংগ্রহ, সংরক্ষণ, স্থানান্তর ও ব্যবহারের উপযোগী Pipeline তৈরি করা।</li>
+        <li><strong>Data Science & Machine Learning:</strong> Data থেকে Pattern শেখা এবং Prediction তৈরি করা।</li>
+        <li><strong>AI Engineering:</strong> AI Model, LLM, RAG, API এবং Software Infrastructure ব্যবহার করে বাস্তব সমস্যার Production-grade সমাধান তৈরি করা।</li>
+      </ol>
+
+      <p>উদাহরণ হিসেবে একটি ব্যাংকের কথা ভাবুন:</p>
+
+      <ul>
+        <li>ব্যাংকের Transaction হলো Data।</li>
+        <li>কোন ধরনের Transaction বেশি হচ্ছে, তা বিশ্লেষণ করা হলো Data Analysis।</li>
+        <li>Transaction Data নির্ভরযোগ্যভাবে সংগ্রহ ও সংরক্ষণ করা হলো Data Engineering।</li>
+        <li>কোন Transaction Fraud হতে পারে তা অনুমান করা হলো Machine Learning।</li>
+        <li>সেই Prediction-কে ব্যাংকের Payment System-এর সঙ্গে যুক্ত করে বাস্তবে ব্যবহারযোগ্য করা হলো AI/ML Engineering-এর কাজের অংশ।</li>
+      </ul>
+
+      <p>
+        এটি একটি ধারণাগত শেখার পথ। বাস্তব প্রতিষ্ঠানে এই কাজগুলো
+        একসঙ্গে বা ভিন্ন ক্রমে হতে পারে।
+      </p>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>3. Technical Terminology — গুরুত্বপূর্ণ Technical Terms</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Term</th><th>সহজ বাংলা অর্থ</th></tr></thead>
+          <tbody>
+            {terms.map(([term, meaning]) => (
+              <tr><td><strong>{term}</strong></td><td>{meaning}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        এই শব্দগুলো শুধু মুখস্থ করবেন না। প্রতিটি শব্দ বাস্তব কাজের সঙ্গে
+        যুক্ত করে বোঝার চেষ্টা করুন।
+      </p>
+
+      <p>
+        উদাহরণ: একটি Online Shop-এর Customer List একটি Dataset হতে পারে।
+        সেই Dataset-এর একটি Customer-এর তথ্য একটি Record। Customer-এর
+        নাম, বয়স, ইমেইল এবং শহর আলাদা আলাদা Field।
+      </p>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>4. Why It Matters — কেন Data Analytics গুরুত্বপূর্ণ?</h2>
+
+      <h3>4.1 অনুমান বনাম Data-driven Decision</h3>
+
+      <p>
+        ধরুন, একজন ব্যবসায়ী বললেন: "আমার মনে হয় শুক্রবারে সবচেয়ে বেশি
+        বিক্রি হয়। তাই শুক্রবারে বেশি পণ্য কিনব।"
+      </p>
+
+      <p>এটি একটি অনুমান। কিন্তু গত ছয় মাসের বিক্রির তথ্য বিশ্লেষণ করে যদি দেখা যায়:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Day</th><th>Total Sales (BDT)</th></tr></thead>
+          <tbody>
+            <tr><td>Sunday</td><td>20,000</td></tr>
+            <tr><td>Monday</td><td>18,000</td></tr>
+            <tr><td>Tuesday</td><td>22,000</td></tr>
+            <tr><td>Wednesday</td><td>25,000</td></tr>
+            <tr><td>Thursday</td><td>30,000</td></tr>
+            <tr><td>Friday</td><td>45,000</td></tr>
+            <tr><td>Saturday</td><td>35,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        তাহলে শুক্রবারে বিক্রি বেশি হওয়ার পক্ষে প্রমাণ পাওয়া গেল।
+        তবে ছয় মাসের Data-তে শুক্রবারের বিক্রি বেশি হলেই ভবিষ্যতেও
+        সবসময় তা হবে—এমন নিশ্চয়তা নেই। ছুটির দিন, মৌসুম, বিজ্ঞাপন
+        এবং অন্যান্য বিষয়ও পরীক্ষা করতে হবে।
+      </p>
+
+      <h3>4.2 Data Analytics-এর বাস্তব ব্যবহার</h3>
+
+      <h4>E-commerce</h4>
+      <ul>
+        <li>Best-selling products খুঁজে বের করা।</li>
+        <li>Customer behavior বোঝা।</li>
+        <li>Cart abandonment বিশ্লেষণ।</li>
+        <li>Product recommendation উন্নত করা।</li>
+      </ul>
+
+      <h4>Banking and Finance</h4>
+      <ul>
+        <li>Fraud detection।</li>
+        <li>Loan risk analysis।</li>
+        <li>Transaction monitoring।</li>
+        <li>Financial forecasting।</li>
+      </ul>
+
+      <h4>Healthcare</h4>
+      <ul>
+        <li>Patient records বিশ্লেষণ।</li>
+        <li>Hospital resource planning।</li>
+        <li>রোগের ঝুঁকি সম্পর্কে গবেষণা।</li>
+        <li>চিকিৎসা কার্যক্রমের মান পর্যবেক্ষণ।</li>
+      </ul>
+
+      <h4>Software and Technology</h4>
+      <ul>
+        <li>Application performance monitoring।</li>
+        <li>User engagement analysis।</li>
+        <li>Error tracking।</li>
+        <li>Product improvement।</li>
+      </ul>
+
+      <h3>4.3 Data Analytics ছাড়া প্রতিষ্ঠানের কী সমস্যা হতে পারে?</h3>
+
+      <ul>
+        <li>ভুল পণ্য বেশি পরিমাণে কিনতে পারে।</li>
+        <li>অপ্রয়োজনীয় বিজ্ঞাপনে অর্থ ব্যয় করতে পারে।</li>
+        <li>গুরুত্বপূর্ণ Customer হারাতে পারে।</li>
+        <li>ব্যবসার প্রকৃত সমস্যাটি বুঝতে ব্যর্থ হতে পারে।</li>
+        <li>কর্মীদের সময় ও সম্পদের অপচয় হতে পারে।</li>
+      </ul>
+
+      <p>
+        তবে Data থাকলেই সঠিক সিদ্ধান্ত নিশ্চিত হয় না। Data ভুল,
+        অসম্পূর্ণ বা পক্ষপাতপূর্ণ হলে সিদ্ধান্তও ভুল হতে পারে।
+        তাই Data-এর মান এবং বিশ্লেষণের পদ্ধতি গুরুত্বপূর্ণ।
+      </p>
+
+      <h3>4.4 Career Opportunity — কেন এই দক্ষতার চাহিদা রয়েছে?</h3>
+
+      <p>
+        প্রতিষ্ঠানগুলো Data ব্যবহার করে ব্যবসা পরিচালনা, পণ্য উন্নয়ন,
+        ঝুঁকি নিয়ন্ত্রণ এবং AI-ভিত্তিক সেবা তৈরি করছে। তাই Data এবং
+        AI-সংশ্লিষ্ট বিভিন্ন ক্যারিয়ার রয়েছে:
+      </p>
+
+      <ul>
+        <li>Data Analyst</li>
+        <li>Business Intelligence Analyst</li>
+        <li>Analytics Engineer</li>
+        <li>Data Engineer</li>
+        <li>Data Scientist</li>
+        <li>Machine Learning Engineer</li>
+        <li>AI Engineer</li>
+      </ul>
+
+      <blockquote>
+        শুধু একটি Tool জানা যথেষ্ট নয়। যে ব্যক্তি Business Problem
+        বুঝতে পারেন, Data বিশ্লেষণ করতে পারেন এবং নিজের ফলাফল পরিষ্কারভাবে
+        ব্যাখ্যা করতে পারেন, তাঁর পেশাগত মূল্য সাধারণত বেশি হয়।
+      </blockquote>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>5. Mathematical Foundation — প্রাথমিক গাণিতিক ভিত্তি</h2>
+
+      <p>
+        এই অধ্যায়ে Advanced Mathematics প্রয়োজন নেই। তবে Data নিয়ে
+        কাজ করার জন্য কিছু সাধারণ হিসাব বুঝতে হবে।
+      </p>
+
+      <p>ধরুন, একটি দোকানে একদিনে পাঁচটি পণ্য বিক্রি হয়েছে:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Product</th><th>Sales (BDT)</th></tr></thead>
+          <tbody>
+            <tr><td>Shirt</td><td>800</td></tr>
+            <tr><td>T-Shirt</td><td>500</td></tr>
+            <tr><td>Pant</td><td>1,200</td></tr>
+            <tr><td>Panjabi</td><td>1,500</td></tr>
+            <tr><td>Cap</td><td>300</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>5.1 Total Sales</h3>
+      <pre><code>{`Total Sales = Sum of All Sales
+
+Total Sales = 800 + 500 + 1200 + 1500 + 300
+
+Total Sales = 4300 BDT`}</code></pre>
+
+      <h3>5.2 Average Sales</h3>
+      <pre><code>{`Average Sales = Total Sales / Number of Products
+
+Average Sales = 4300 / 5
+
+Average Sales = 860 BDT`}</code></pre>
+
+      <h3>5.3 Maximum and Minimum</h3>
+      <pre><code>{`Maximum Sales = 1500 BDT
+Minimum Sales = 300 BDT`}</code></pre>
+
+      <h3>5.4 Percentage Contribution</h3>
+      <pre><code>{`Percentage Contribution =
+(Product Sales / Total Sales) × 100
+
+Shirt Contribution =
+(800 / 4300) × 100
+
+= 18.60%`}</code></pre>
+
+      <p>
+        এই ধরনের সাধারণ হিসাব Data Analysis-এর ভিত্তি। পরবর্তী
+        অধ্যায়গুলোতে Average, Percentage, Statistical Measures,
+        Probability, Regression এবং অন্যান্য Mathematical Concepts
+        বিস্তারিত শেখানো হবে।
+      </p>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>6. Step-by-Step Tutorial — প্রথম Data Analysis বুঝে নেওয়া</h2>
+
+      <p>
+        এখন আমরা একটি ছোট ব্যবসার Data নিয়ে কাজ করব।
+      </p>
+
+      <p><strong>Business Scenario:</strong> একটি ছোট Online Shop প্রতিদিনের বিক্রি পর্যবেক্ষণ করতে চায়।</p>
+
+      <p>আমাদের প্রশ্ন:</p>
+      <ol>
+        <li>মোট কত বিক্রি হয়েছে?</li>
+        <li>মোট কতটি পণ্য বিক্রি হয়েছে?</li>
+        <li>কোন পণ্যের বিক্রি সবচেয়ে বেশি?</li>
+        <li>গড় অর্ডারের মূল্য কত?</li>
+        <li>ব্যবসার কোন বিষয়ে আরও অনুসন্ধান করা দরকার?</li>
+      </ol>
+
+      <h3>Step 1: Data সংগ্রহ</h3>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Order ID</th><th>Product</th><th>Quantity</th><th>Unit Price</th></tr></thead>
+          <tbody>
+            <tr><td>1001</td><td>Shirt</td><td>2</td><td>800</td></tr>
+            <tr><td>1002</td><td>T-Shirt</td><td>1</td><td>500</td></tr>
+            <tr><td>1003</td><td>Pant</td><td>1</td><td>1,200</td></tr>
+            <tr><td>1004</td><td>Shirt</td><td>3</td><td>800</td></tr>
+            <tr><td>1005</td><td>Panjabi</td><td>1</td><td>1,500</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Step 2: Business Question নির্ধারণ</h3>
+      <p>
+        শুধু Data সংগ্রহ করলেই হবে না। কী জানতে চাই, সেটি আগে
+        নির্ধারণ করতে হবে।
+      </p>
+      <p>
+        আমাদের Business Question: "এই পাঁচটি Order থেকে ব্যবসার
+        বিক্রির অবস্থা কী?"
+      </p>
+
+      <h3>Step 3: Data পরীক্ষা</h3>
+      <p>আমরা পরীক্ষা করব:</p>
+      <ul>
+        <li>কোনো Order ID অনুপস্থিত কি না।</li>
+        <li>Quantity শূন্য কি না।</li>
+        <li>Unit Price সঠিক কি না।</li>
+        <li>একই Order ভুলভাবে একাধিকবার আছে কি না।</li>
+      </ul>
+
+      <h3>Step 4: Sales Calculation</h3>
+      <pre><code>{`Order Sales = Quantity × Unit Price`}</code></pre>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Order ID</th><th>Product</th><th>Quantity</th><th>Unit Price</th><th>Sales</th></tr></thead>
+          <tbody>
+            <tr><td>1001</td><td>Shirt</td><td>2</td><td>800</td><td>1,600</td></tr>
+            <tr><td>1002</td><td>T-Shirt</td><td>1</td><td>500</td><td>500</td></tr>
+            <tr><td>1003</td><td>Pant</td><td>1</td><td>1,200</td><td>1,200</td></tr>
+            <tr><td>1004</td><td>Shirt</td><td>3</td><td>800</td><td>2,400</td></tr>
+            <tr><td>1005</td><td>Panjabi</td><td>1</td><td>1,500</td><td>1,500</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Step 5: Results তৈরি</h3>
+      <pre><code>{`Total Orders = 5
+Total Quantity Sold = 8
+Total Sales = 7200 BDT
+
+Average Order Value = 7200 / 5
+Average Order Value = 1440 BDT`}</code></pre>
+
+      <h3>Step 6: Business Insight তৈরি</h3>
+      <ul>
+        <li>Shirt-এর মোট বিক্রি 4,000 BDT।</li>
+        <li>Panjabi-এর বিক্রি 1,500 BDT।</li>
+        <li>Pant-এর বিক্রি 1,200 BDT।</li>
+        <li>T-Shirt-এর বিক্রি 500 BDT।</li>
+      </ul>
+
+      <p>
+        এই ছোট Dataset থেকে Shirt-এর বিক্রি সবচেয়ে বেশি। তবে এই
+        ফলাফল দিয়ে এখনই সিদ্ধান্ত নেওয়া উচিত নয় যে Shirt-ই সবচেয়ে
+        লাভজনক পণ্য। কারণ এখানে পণ্যের ক্রয়মূল্য, অন্যান্য খরচ,
+        Return এবং Discount দেওয়া হয়নি।
+      </p>
+
+      <blockquote>
+        একজন ভালো Data Analyst শুধু সংখ্যা বের করেন না; সংখ্যাগুলো
+        কী বলতে পারছে এবং কী বলতে পারছে না, সেটিও ব্যাখ্যা করেন।
+      </blockquote>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>7. Practical Code — Python দিয়ে প্রথম Data Analysis</h2>
+
+      <p>
+        এখন একই কাজ Python দিয়ে করব। এই কোডটি দেখাবে কীভাবে একটি
+        ছোট Dataset থেকে প্রাথমিক ফলাফল বের করা যায়।
+      </p>
+
+      <pre><code class="language-python">{`# Sample E-commerce Sales Data
+
+sales_data = [
+    {
+        "order_id": 1001,
+        "product": "Shirt",
+        "quantity": 2,
+        "unit_price": 800
+    },
+    {
+        "order_id": 1002,
+        "product": "T-Shirt",
+        "quantity": 1,
+        "unit_price": 500
+    },
+    {
+        "order_id": 1003,
+        "product": "Pant",
+        "quantity": 1,
+        "unit_price": 1200
+    },
+    {
+        "order_id": 1004,
+        "product": "Shirt",
+        "quantity": 3,
+        "unit_price": 800
+    },
+    {
+        "order_id": 1005,
+        "product": "Panjabi",
+        "quantity": 1,
+        "unit_price": 1500
+    }
+]
+
+total_sales = 0
+total_quantity = 0
+
+for order in sales_data:
+    order_sales = (
+        order["quantity"] * order["unit_price"]
+    )
+
+    total_sales += order_sales
+    total_quantity += order["quantity"]
+
+total_orders = len(sales_data)
+
+average_order_value = total_sales / total_orders
+
+print("Total Orders:", total_orders)
+print("Total Quantity:", total_quantity)
+print("Total Sales:", total_sales)
+print("Average Order Value:", average_order_value)`}</code></pre>
+
+      <h3>Expected Output</h3>
+      <pre><code>{`Total Orders: 5
+Total Quantity: 8
+Total Sales: 7200
+Average Order Value: 1440.0`}</code></pre>
+
+      <h3>কোডটি কীভাবে কাজ করছে?</h3>
+      <ol>
+        <li><code>sales_data</code>-তে পাঁচটি Order সংরক্ষণ করা হয়েছে।</li>
+        <li><code>total_sales</code> দিয়ে মোট বিক্রি গণনা করা হচ্ছে।</li>
+        <li><code>total_quantity</code> দিয়ে মোট বিক্রিত পণ্যের সংখ্যা গণনা করা হচ্ছে।</li>
+        <li><code>for</code> Loop দিয়ে প্রতিটি Order পরীক্ষা করা হচ্ছে।</li>
+        <li>Quantity এবং Unit Price গুণ করে Order Sales বের করা হচ্ছে।</li>
+        <li>সব Order-এর বিক্রি যোগ করে Total Sales পাওয়া যাচ্ছে।</li>
+        <li>শেষে Total Orders দিয়ে ভাগ করে Average Order Value পাওয়া যাচ্ছে।</li>
+      </ol>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>8. Real Dataset — বাস্তব Dataset কোথায় পাবেন?</h2>
+
+      <p>
+        Professional Data Analyst হওয়ার জন্য শুধু বইয়ের উদাহরণ
+        যথেষ্ট নয়। বাস্তব Dataset নিয়ে কাজ করতে হবে।
+      </p>
+
+      <ul>
+        <li><strong>Kaggle:</strong> <a href="https://www.kaggle.com/datasets" target="_blank" rel="noopener noreferrer">Kaggle Datasets</a> — Beginner থেকে Advanced পর্যায়ের Dataset ও Practice Notebook।</li>
+        <li><strong>UCI Machine Learning Repository:</strong> <a href="https://archive.ics.uci.edu/" target="_blank" rel="noopener noreferrer">UCI Repository</a> — শিক্ষা ও গবেষণার জন্য পরিচিত Dataset Repository।</li>
+        <li><strong>Google Dataset Search:</strong> <a href="https://datasetsearch.research.google.com/" target="_blank" rel="noopener noreferrer">Dataset Search</a> — বিভিন্ন Website ও Repository-তে প্রকাশিত Dataset খুঁজতে সাহায্য করে।</li>
+        <li><strong>World Bank Open Data:</strong> <a href="https://data.worldbank.org/" target="_blank" rel="noopener noreferrer">World Bank Data</a> — অর্থনীতি, জনসংখ্যা ও উন্নয়ন সম্পর্কিত পরিসংখ্যান।</li>
+        <li><strong>Bangladesh Bureau of Statistics:</strong> <a href="https://bbs.gov.bd/" target="_blank" rel="noopener noreferrer">BBS</a> — বাংলাদেশের জনসংখ্যা, অর্থনীতি ও সামাজিক পরিসংখ্যান।</li>
+      </ul>
+
+      <h3>এই অধ্যায়ের জন্য Dataset নির্বাচন</h3>
+      <p>
+        আপনার প্রথম কাজের জন্য একটি ছোট E-commerce Sales Dataset
+        যথেষ্ট। Dataset-এ নিচের Column-গুলো থাকতে পারে:
+      </p>
+
+      <pre><code>{`Order_ID
+Order_Date
+Customer_ID
+Product
+Category
+Quantity
+Unit_Price
+Discount
+City
+Payment_Method`}</code></pre>
+
+      <p>
+        এখনই সব Column বিশ্লেষণ করার দরকার নেই। প্রথমে Order,
+        Product, Quantity এবং Sales বুঝুন।
+      </p>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>9. Hands-on Lab — নিজের প্রথম Data Analysis</h2>
+
+      <p>নিচের Dataset ব্যবহার করে প্রশ্নগুলোর উত্তর বের করুন।</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Order ID</th><th>Product</th><th>Quantity</th><th>Unit Price</th></tr></thead>
+          <tbody>
+            <tr><td>2001</td><td>Laptop</td><td>1</td><td>65,000</td></tr>
+            <tr><td>2002</td><td>Mouse</td><td>2</td><td>800</td></tr>
+            <tr><td>2003</td><td>Keyboard</td><td>1</td><td>1,500</td></tr>
+            <tr><td>2004</td><td>Monitor</td><td>1</td><td>18,000</td></tr>
+            <tr><td>2005</td><td>Mouse</td><td>3</td><td>800</td></tr>
+            <tr><td>2006</td><td>Laptop</td><td>1</td><td>65,000</td></tr>
+            <tr><td>2007</td><td>Keyboard</td><td>2</td><td>1,500</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>আপনার কাজ</h3>
+      <ol>
+        <li>মোট কতটি Order হয়েছে?</li>
+        <li>মোট কতটি পণ্য বিক্রি হয়েছে?</li>
+        <li>মোট বিক্রির পরিমাণ কত?</li>
+        <li>কোন পণ্যের Quantity সবচেয়ে বেশি?</li>
+        <li>কোন পণ্যের Sales Amount সবচেয়ে বেশি?</li>
+        <li>Average Order Value কত?</li>
+        <li>ব্যবসার মালিককে আপনি কোন তিনটি Recommendation দেবেন?</li>
+      </ol>
+
+      <h3>Lab Submission Format</h3>
+      <pre><code>{`Project Name:
+My First E-commerce Sales Analysis
+
+Business Problem:
+Understand the basic sales performance.
+
+Total Orders:
+
+Total Quantity Sold:
+
+Total Sales:
+
+Average Order Value:
+
+Best Selling Product:
+
+Highest Revenue Product:
+
+Three Business Insights:
+
+1.
+2.
+3.`}</code></pre>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>10. Real-world Project — Small Business Daily Sales Analytics Report</h2>
+
+      <p><strong>Project Background</strong></p>
+      <p>
+        একজন ছোট ব্যবসায়ী প্রতিদিনের বিক্রির হিসাব রাখেন। কিন্তু
+        তিনি জানেন না প্রতিদিন কত বিক্রি হচ্ছে, কোন পণ্য বেশি
+        বিক্রি হচ্ছে, কোন পণ্যের বিক্রি কমছে এবং কোন পণ্য বেশি
+        Stock-এ রাখা উচিত।
+      </p>
+
+      <p><strong>Project Objective</strong></p>
+      <p>ব্যবসায়ীর জন্য একটি Daily Sales Analytics Report তৈরি করা।</p>
+
+      <h3>Project Scope</h3>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Analysis Area</th><th>Business Question</th></tr></thead>
+          <tbody>
+            <tr><td>Total Sales</td><td>মোট বিক্রি কত?</td></tr>
+            <tr><td>Total Orders</td><td>মোট Order কত?</td></tr>
+            <tr><td>Product Sales</td><td>কোন পণ্য বেশি বিক্রি হচ্ছে?</td></tr>
+            <tr><td>Quantity Analysis</td><td>কোন পণ্যের চাহিদা বেশি?</td></tr>
+            <tr><td>Average Order Value</td><td>গড় Order Value কত?</td></tr>
+            <tr><td>Daily Performance</td><td>প্রতিদিনের বিক্রি কেমন?</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Project Workflow</h3>
+      <ol>
+        <li><strong>Collect Sales Data:</strong> প্রতিদিনের Order সংগ্রহ।</li>
+        <li><strong>Understand the Dataset:</strong> Column ও Record বোঝা।</li>
+        <li><strong>Calculate Sales:</strong> Quantity × Unit Price।</li>
+        <li><strong>Analyze Results:</strong> Sales, Quantity ও Orders বিশ্লেষণ।</li>
+        <li><strong>Prepare Business Insights:</strong> ব্যবসার মালিককে Recommendation প্রদান।</li>
+      </ol>
+
+      <h3>Project Deliverables</h3>
+      <ol>
+        <li>Original Sales Dataset।</li>
+        <li>Sales Calculation।</li>
+        <li>Total Sales Summary।</li>
+        <li>Product-wise Sales Summary।</li>
+        <li>Daily Sales Summary।</li>
+        <li>Three Business Insights।</li>
+        <li>A Short Business Recommendation Report।</li>
+      </ol>
+
+      <p>
+        পরবর্তী Excel, SQL, Python এবং Power BI অধ্যায়ে এই Project-কে
+        আরও Professional করে তুলবেন।
+      </p>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>11. Expected Output — কাঙ্ক্ষিত ফলাফল ও সমাধান</h2>
+
+      <p>Hands-on Lab-এর Dataset-এর সঠিক হিসাব:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Product</th><th>Total Quantity</th><th>Total Sales</th></tr></thead>
+          <tbody>
+            <tr><td>Laptop</td><td>2</td><td>130,000</td></tr>
+            <tr><td>Mouse</td><td>5</td><td>4,000</td></tr>
+            <tr><td>Keyboard</td><td>3</td><td>4,500</td></tr>
+            <tr><td>Monitor</td><td>1</td><td>18,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Final Calculation</h3>
+      <pre><code>{`Total Orders = 7
+
+Total Quantity =
+1 + 2 + 1 + 1 + 3 + 1 + 2
+
+Total Quantity = 11
+
+Total Sales =
+65000 + 1600 + 1500 + 18000
++ 2400 + 65000 + 3000
+
+Total Sales = 156500 BDT
+
+Average Order Value =
+156500 / 7
+
+Average Order Value = 22357.14 BDT`}</code></pre>
+
+      <h3>Business Insights</h3>
+      <ol>
+        <li>Laptop মোট বিক্রির সবচেয়ে বড় অংশ তৈরি করেছে।</li>
+        <li>Mouse-এর Quantity সবচেয়ে বেশি বিক্রি হয়েছে।</li>
+        <li>Keyboard-এর বিক্রি Mouse-এর তুলনায় কম হলেও তার মোট বিক্রি বেশি।</li>
+      </ol>
+
+      <p>
+        এখানে একটি গুরুত্বপূর্ণ পার্থক্য রয়েছে:
+      </p>
+
+      <ul>
+        <li><strong>Best-selling by Quantity:</strong> Mouse</li>
+        <li><strong>Highest Revenue by Product:</strong> Laptop</li>
+      </ul>
+
+      <p>
+        একটি পণ্য বেশি সংখ্যায় বিক্রি হলেই সেটি সর্বোচ্চ Revenue
+        তৈরি করবে, এমন নয়।
+      </p>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>12. Common Mistakes — নতুনদের সাধারণ ভুল</h2>
+
+      <h3>Mistake 1: Data-কে শুধু Number মনে করা</h3>
+      <p>
+        Data শুধু সংখ্যা নয়। Text, Date, Image, Audio, Video এবং
+        অন্যান্য ধরনের তথ্যও Data হতে পারে।
+      </p>
+
+      <h3>Mistake 2: Data সংগ্রহ করলেই Analysis হয়ে গেছে মনে করা</h3>
+      <p>
+        Data সংগ্রহ প্রথম ধাপ। এরপর প্রশ্ন নির্ধারণ, পরীক্ষা,
+        বিশ্লেষণ এবং ব্যাখ্যা করতে হয়।
+      </p>
+
+      <h3>Mistake 3: Business Problem না বুঝে Analysis শুরু করা</h3>
+      <p>
+        কোনো প্রতিষ্ঠানের জন্য Data Analysis করার আগে বুঝতে হবে
+        তারা কী জানতে চায় এবং কেন জানতে চায়।
+      </p>
+
+      <h3>Mistake 4: Revenue এবং Profit এক মনে করা</h3>
+      <p>
+        Revenue হলো বিক্রি থেকে পাওয়া অর্থ। Profit নির্ণয়ের জন্য
+        খরচও বিবেচনা করতে হয়।
+      </p>
+
+      <pre><code>{`Profit = Revenue - Total Cost`}</code></pre>
+
+      <h3>Mistake 5: ছোট Dataset থেকে বড় সিদ্ধান্ত নেওয়া</h3>
+      <p>
+        মাত্র পাঁচটি Order দেখে পুরো বছরের ব্যবসার প্রবণতা
+        নির্ধারণ করা যায় না।
+      </p>
+
+      <h3>Mistake 6: Data-এর সীমাবদ্ধতা উপেক্ষা করা</h3>
+      <p>
+        Discount, Return, Tax, Shipping Cost বা Product Cost
+        অনুপস্থিত থাকলে Analysis অসম্পূর্ণ হতে পারে।
+      </p>
+
+      <h3>Mistake 7: শুধু ফলাফল দেওয়া, ব্যাখ্যা না করা</h3>
+      <p>
+        একজন Data Professional শুধু "Sales = 156,500" বলবেন না।
+        তিনি ব্যাখ্যা করবেন এই ফলাফল ব্যবসার জন্য কী অর্থ বহন করে।
+      </p>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>13. Best Practices — Professional Data Analyst-এর কাজের নিয়ম</h2>
+
+      <ol>
+        <li><strong>Business Question First:</strong> Data বিশ্লেষণের আগে সমস্যাটি বুঝুন।</li>
+        <li><strong>Understand the Data:</strong> Data-এর উৎস এবং অর্থ যাচাই করুন।</li>
+        <li><strong>Check Accuracy:</strong> হিসাব ও তথ্য সঠিক কি না পরীক্ষা করুন।</li>
+        <li><strong>Document Your Work:</strong> কী করেছেন এবং কেন করেছেন, লিখে রাখুন।</li>
+        <li><strong>Avoid Assumptions:</strong> প্রমাণ ছাড়া সিদ্ধান্ত দেবেন না।</li>
+        <li><strong>Explain Limitations:</strong> কোন তথ্য নেই এবং ফলাফল কতটা নির্ভরযোগ্য, তা জানান।</li>
+        <li><strong>Protect Privacy:</strong> Customer-এর ব্যক্তিগত তথ্য নিরাপদ রাখুন।</li>
+        <li><strong>Communicate Clearly:</strong> Technical এবং Non-Technical উভয় ধরনের মানুষের কাছে ফলাফল ব্যাখ্যা করতে শিখুন।</li>
+        <li><strong>Make Actionable Recommendations:</strong> শুধু সমস্যা দেখাবেন না, সমাধানের প্রস্তাবও দিন।</li>
+        <li><strong>Keep Learning:</strong> Tool পরিবর্তন হবে, কিন্তু Problem-solving এবং Analytical Thinking দীর্ঘমেয়াদে মূল্যবান থাকবে।</li>
+      </ol>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>14. Job Assessment — নিজের দক্ষতা যাচাই</h2>
+
+      <h3>Part A: Multiple Choice Questions</h3>
+
+      <div class="quiz" id="chapter-quiz">
+        {questions.map((q, i) => (
+          <div class="quiz-question" data-question={i}>
+            <h4>Question {i + 1}. {q.question}</h4>
+            {q.options.map((option, j) => (
+              <label class="quiz-option">
+                <input type="radio" name={`question-${i}`} value={j} />
+                <span>{option}</span>
+              </label>
+            ))}
+            <p class="quiz-feedback" hidden></p>
+          </div>
+        ))}
+        <button class="quiz-button" id="submit-quiz" type="button">Submit Answers</button>
+        <div class="quiz-result" id="quiz-result" aria-live="polite"></div>
+      </div>
+
+      <h3>Part B: Practical Coding Assessment</h3>
+      <p>নিচের কাজগুলো Python দিয়ে সম্পন্ন করুন:</p>
+      <ol>
+        <li>একটি List তৈরি করুন যেখানে পাঁচটি Product-এর Price থাকবে।</li>
+        <li>সব Price যোগ করে Total Sales বের করুন।</li>
+        <li>Average Price বের করুন।</li>
+        <li>সর্বোচ্চ এবং সর্বনিম্ন Price বের করুন।</li>
+        <li>প্রতিটি Product-এর Price Print করুন।</li>
+      </ol>
+
+      <h3>Part C: Business Case Study</h3>
+      <p>একজন ব্যবসায়ী বললেন: "আমার বিক্রি কমে যাচ্ছে। আমি আরও বিজ্ঞাপন দিতে চাই।"</p>
+
+      <p>আপনাকে Data Analyst হিসেবে নিচের প্রশ্নগুলোর উত্তর দিতে হবে:</p>
+      <ol>
+        <li>প্রথমে কোন Data সংগ্রহ করবেন?</li>
+        <li>কোন সময়ের Data বিশ্লেষণ করবেন?</li>
+        <li>কোন Business Metrics পরীক্ষা করবেন?</li>
+        <li>বিজ্ঞাপন বাড়ানোর আগে কী কী বিষয় যাচাই করবেন?</li>
+        <li>ব্যবসায়ীকে কীভাবে আপনার Recommendation দেবেন?</li>
+      </ol>
+
+      <p>
+        এখানে একটিমাত্র উত্তর নেই। আপনার কাজ হলো যুক্তিসংগত
+        Analysis Plan তৈরি করা।
+      </p>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>15. Interview Preparation — চাকরির ইন্টারভিউ</h2>
+
+      <h3>Q1. What is Data?</h3>
+      <p>
+        <strong>Answer:</strong> Data refers to raw facts, observations,
+        measurements, or records collected about an entity, event, or
+        activity.
+      </p>
+      <p>
+        উদাহরণ: Customer Name, Product Price, Order Date এবং Transaction Amount।
+      </p>
+
+      <h3>Q2. What is Data Analytics?</h3>
+      <p>
+        <strong>Answer:</strong> Data Analytics is the process of
+        examining and interpreting data to identify patterns, answer
+        questions, generate insights, and support decision-making.
+      </p>
+
+      <h3>Q3. Why is Data Analytics important for businesses?</h3>
+      <p>
+        <strong>Answer:</strong> Data Analytics helps businesses
+        understand performance, identify problems, improve operations,
+        understand customers, manage risks, and make evidence-based decisions.
+      </p>
+
+      <h3>Q4. What is a Dataset?</h3>
+      <p>
+        <strong>Answer:</strong> A Dataset is an organized collection
+        of related data records. It may contain rows and columns,
+        files, or other structured collections of information.
+      </p>
+
+      <h3>Q5. What is a Business Insight?</h3>
+      <p>
+        <strong>Answer:</strong> A Business Insight is a meaningful
+        finding derived from data analysis that helps an organization
+        understand an issue or identify an opportunity.
+      </p>
+
+      <h3>Q6. What is the difference between Revenue and Profit?</h3>
+      <p>
+        <strong>Answer:</strong> Revenue is the income generated from
+        business activities, while Profit is the amount remaining
+        after deducting relevant costs.
+      </p>
+
+      <h3>Q7. Does more data always mean better decisions?</h3>
+      <p>
+        <strong>Answer:</strong> No. Data quality, relevance,
+        completeness, accuracy, and correct interpretation are more
+        important than data volume alone.
+      </p>
+
+      <h3>Q8. How would you start analyzing declining sales?</h3>
+      <p>
+        <strong>Answer:</strong> I would first clarify the business
+        problem, define the analysis period, collect relevant sales
+        and business data, validate the data, identify useful metrics,
+        investigate possible causes, and communicate evidence-based
+        recommendations.
+      </p>
+
+      <h3>Interview Follow-up Practice</h3>
+      <p>
+        একজন Interviewer আপনাকে বলতে পারেন:
+        "Sales decreased by 20%. What would you investigate first?"
+      </p>
+
+      <p>আপনাকে ভাবতে হবে:</p>
+      <ul>
+        <li>কোন সময়ের সঙ্গে তুলনা করা হয়েছে?</li>
+        <li>Order সংখ্যা কমেছে, নাকি Average Order Value?</li>
+        <li>Website Traffic কমেছে?</li>
+        <li>Conversion Rate কমেছে?</li>
+        <li>কোনো Product Stock-out হয়েছে?</li>
+        <li>Marketing Campaign বন্ধ হয়েছে?</li>
+        <li>Customer Return বেড়েছে?</li>
+        <li>কোনো Technical সমস্যা হয়েছে?</li>
+      </ul>
+
+      <blockquote>
+        সমস্যার লক্ষণ এবং সমস্যার প্রকৃত কারণ এক জিনিস নয়।
+        একজন ভালো Analyst এই দুটির পার্থক্য বুঝতে চেষ্টা করেন।
+      </blockquote>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>16. Chapter Assignment — নিজের প্রথম Professional Learning Artifact</h2>
+
+      <p><strong>Assignment: My First Data Analytics Report</strong></p>
+      <p>প্রস্তাবিত সময়: ৩–৪ ঘণ্টা। নিজের সুবিধামতো সময় ভাগ করে করতে পারেন।</p>
+
+      <div class="assignment" id="chapter-assignment">
+        <div class="assignment-progress">
+          <strong>Assignment Progress</strong>
+          <span id="progress-text">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        {assignments.map((task, i) => (
+          <label class="assignment-item">
+            <input type="checkbox" />
+            <span>{task}</span>
+          </label>
+        ))}
+        <button type="button" class="copy-button" id="copy-assignment">
+          Copy Assignment Checklist
+        </button>
+        <span class="copy-status" id="copy-status" aria-live="polite"></span>
+      </div>
+
+      <h3>GitHub Portfolio Structure</h3>
+
+      <p>আপনার প্রথম Project-এর জন্য একটি Repository তৈরি করুন:</p>
+
+      <pre><code>{`my-first-data-analytics-project/
+│
+├── README.md
+├── data/
+│   └── sales_data.csv
+├── notebooks/
+│   └── sales_analysis.ipynb
+├── reports/
+│   └── business_insights.md
+└── requirements.txt`}</code></pre>
+
+      <h3>README.md-তে লিখবেন</h3>
+
+      <pre><code>{`# My First Data Analytics Project
+
+## Business Problem
+Understand the basic sales performance
+of a small e-commerce business.
+
+## Dataset
+Sample e-commerce sales data.
+
+## Analysis
+- Total Sales
+- Total Orders
+- Total Quantity
+- Average Order Value
+- Product-wise Sales
+
+## Key Insights
+Write your findings here.
+
+## Business Recommendations
+Write your recommendations here.`}</code></pre>
+
+      <p>
+        এই Project এখন ছোট। কিন্তু পরবর্তী অধ্যায়গুলোতে Excel,
+        SQL, Python, Statistics এবং Power BI ব্যবহার করে এটিকে
+        ধীরে ধীরে Professional Portfolio Project-এ রূপান্তর করবেন।
+      </p>
+    </section>
+
+    <hr />
+
+    <section>
+      <h2>Chapter 1 — Final Career Perspective</h2>
+
+      <p>
+        আপনি যদি Data Analytics থেকে AI Engineering পর্যন্ত যেতে চান,
+        তাহলে প্রথমে শুধু Tools শেখার দিকে মনোযোগ দিলে হবে না।
+      </p>
+
+      <p>আপনাকে তিনটি দক্ষতা তৈরি করতে হবে:</p>
+
+      <h3>1. Analytical Thinking</h3>
+      <p>কোনো সমস্যা দেখে সঠিক প্রশ্ন করতে পারা।</p>
+
+      <h3>2. Technical Skills</h3>
+      <p>Data সংগ্রহ, সংরক্ষণ, বিশ্লেষণ, প্রোগ্রামিং এবং AI System তৈরি করতে পারা।</p>
+
+      <h3>3. Communication and Problem Solving</h3>
+      <p>আপনার কাজের ফলাফল অন্যকে বোঝাতে এবং বাস্তব সমস্যার সমাধান করতে পারা।</p>
+
+      <p>
+        আপনার Programming এবং Software Development অভিজ্ঞতা
+        পরবর্তী Data Engineering, ML Engineering ও AI Engineering
+        অধ্যায়ে কাজে লাগবে। তবে Business Analytics, Statistics,
+        Data Quality এবং Data-driven Decision Making-ও আলাদাভাবে
+        শিখতে হবে।
+      </p>
+
+      <p>
+        একটি চাকরির জন্য শুধু Certificate বা Course Completion যথেষ্ট নয়।
+        বাস্তব Project, পরিষ্কার Code, ভালো Documentation এবং Interview-তে
+        নিজের সিদ্ধান্ত ব্যাখ্যা করার ক্ষমতা গড়ে তুলুন।
+      </p>
+
+      <blockquote>
+        আপনার লক্ষ্য শুধু Data নিয়ে কাজ শেখা নয়—Data ব্যবহার করে
+        বাস্তব সমস্যার সমাধান করতে শেখা।
+      </blockquote>
+    </section>
+
+    <hr />
+
+    <section class="completion">
+      <h2>Chapter 1 Completion Checklist</h2>
+      <p>এই অধ্যায় শেষ করার আগে নিজেকে যাচাই করুন:</p>
+      <ul>
+        <li>Data-এর ধারণা ব্যাখ্যা করতে পারি।</li>
+        <li>বাস্তব জীবনের Data-এর উদাহরণ দিতে পারি।</li>
+        <li>Data Analytics-এর উদ্দেশ্য বুঝতে পারি।</li>
+        <li>একটি সাধারণ Sales Dataset বিশ্লেষণ করতে পারি।</li>
+        <li>Total Sales এবং Average Order Value বের করতে পারি।</li>
+        <li>Data থেকে Business Insight তৈরি করতে পারি।</li>
+        <li>একটি ছোট Project-এর কাজ GitHub-এ সংরক্ষণ করতে পারি।</li>
+      </ul>
+
+      <p class="completion-label">CHAPTER 1 COMPLETED</p>
+    </section>
+
+    <nav class="chapter-navigation" aria-label="Chapter navigation">
+      <a href="/data2ai/part/foundations/" class="nav-link previous">
+        <span>← Previous</span>
+        <strong>Part 1 Overview</strong>
+      </a>
+      <a href="/data2ai/part/foundations/chapter-02/" class="nav-link next">
+        <span>Next Chapter →</span>
+        <strong>What is Data Analysis?</strong>
+      </a>
+    </nav>
+  </article>
 </BookLayout>
+
+<style>
+  .chapter {
+    width: 100%;
+    max-width: 850px;
+    margin-inline: auto;
+    line-height: 1.85;
+    overflow-wrap: anywhere;
+  }
+
+  .chapter-header {
+    padding-block: 2rem 1.5rem;
+  }
+
+  .eyebrow,
+  .chapter-number,
+  .completion-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--color-accent, #60a5fa);
+  }
+
+  .chapter-number {
+    margin-bottom: 0.5rem;
+  }
+
+  .chapter-header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.25;
+    margin-block: 0.5rem 1rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: var(--color-muted, #9ca3af);
+  }
+
+  .chapter-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .chapter-meta span {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--color-border, #374151);
+    border-radius: 999px;
+  }
+
+  .chapter section {
+    padding-block: 1rem;
+    scroll-margin-top: 5rem;
+  }
+
+  .chapter h2 {
+    font-size: clamp(1.45rem, 3vw, 1.8rem);
+    line-height: 1.4;
+    margin-block: 1.5rem 1rem;
+  }
+
+  .chapter h3 {
+    font-size: 1.2rem;
+    margin-top: 1.8rem;
+  }
+
+  .chapter h4 {
+    font-size: 1rem;
+    margin-top: 1.4rem;
+  }
+
+  .chapter p,
+  .chapter li {
+    line-height: 1.9;
+  }
+
+  .chapter li {
+    margin-bottom: 0.4rem;
+  }
+
+  .chapter blockquote {
+    margin: 1.5rem 0;
+    padding: 1rem 1.2rem;
+    border-left: 4px solid var(--color-accent, #60a5fa);
+    background: var(--color-card, rgba(128, 128, 128, 0.08));
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+
+  .chapter pre {
+    overflow-x: auto;
+    padding: 1rem;
+    border: 1px solid var(--color-border, #374151);
+    border-radius: 0.65rem;
+    line-height: 1.6;
+    font-size: 0.88rem;
+  }
+
+  .chapter code {
+    font-family: "Cascadia Code", "Fira Code", monospace;
+  }
+
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin-block: 1rem;
+    border: 1px solid var(--color-border, #374151);
+    border-radius: 0.65rem;
+  }
+
+  .chapter table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 420px;
+    font-size: 0.92rem;
+  }
+
+  .chapter th,
+  .chapter td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border, #374151);
+  }
+
+  .chapter th {
+    background: var(--color-card, rgba(128, 128, 128, 0.08));
+    font-weight: 700;
+  }
+
+  .chapter tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .chapter a {
+    color: var(--color-accent, #60a5fa);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .quiz,
+  .assignment {
+    margin-block: 1rem;
+    padding: 1.2rem;
+    border: 1px solid var(--color-border, #374151);
+    border-radius: 0.8rem;
+  }
+
+  .quiz-question {
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--color-border, #374151);
+  }
+
+  .quiz-option,
+  .assignment-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.55rem 0;
+    cursor: pointer;
+  }
+
+  .quiz-option input,
+  .assignment-item input {
+    margin-top: 0.5rem;
+    accent-color: var(--color-accent, #60a5fa);
+  }
+
+  .quiz-feedback {
+    margin-top: 0.7rem;
+    padding: 0.7rem;
+    border-radius: 0.5rem;
+    background: var(--color-card, rgba(128, 128, 128, 0.08));
+  }
+
+  .quiz-button,
+  .copy-button {
+    margin-top: 1rem;
+    padding: 0.7rem 1.1rem;
+    border: 0;
+    border-radius: 0.5rem;
+    background: var(--color-accent, #2563eb);
+    color: white;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .quiz-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .quiz-result {
+    margin-top: 1rem;
+    font-weight: 700;
+  }
+
+  .assignment-progress {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .progress-track {
+    height: 8px;
+    margin-block: 0.8rem 1rem;
+    background: var(--color-border, #374151);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    width: 0;
+    height: 100%;
+    background: var(--color-accent, #2563eb);
+    transition: width 0.2s ease;
+  }
+
+  .copy-status {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .completion {
+    padding: 1.5rem;
+    border: 1px solid var(--color-border, #374151);
+    border-radius: 0.8rem;
+  }
+
+  .completion-label {
+    display: inline-block;
+    margin-top: 1rem;
+  }
+
+  .chapter-navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-block: 2.5rem;
+  }
+
+  .nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1rem;
+    border: 1px solid var(--color-border, #374151);
+    border-radius: 0.65rem;
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+
+  .nav-link span {
+    font-size: 0.8rem;
+    color: var(--color-muted, #9ca3af);
+  }
+
+  .nav-link.next {
+    text-align: right;
+  }
+
+  @media (max-width: 600px) {
+    .chapter-navigation {
+      grid-template-columns: 1fr;
+    }
+
+    .chapter {
+      font-size: 0.97rem;
+    }
+
+    .chapter-meta {
+      gap: 0.4rem;
+    }
+
+    .quiz,
+    .assignment {
+      padding: 0.85rem;
+    }
+  }
+</style>
+
+<script>
+  const quiz = document.querySelector("#chapter-quiz");
+
+  if (quiz) {
+    const submitButton = quiz.querySelector("#submit-quiz");
+    const result = quiz.querySelector("#quiz-result");
+
+    const answers = [1, 0, 2, 0, 1];
+
+    submitButton?.addEventListener("click", () => {
+      let score = 0;
+
+      quiz.querySelectorAll(".quiz-question").forEach((question, index) => {
+        const selected = question.querySelector('input[type="radio"]:checked');
+        const feedback = question.querySelector(".quiz-feedback");
+
+        if (!feedback) return;
+
+        const correct = selected && Number(selected.value) === answers[index];
+
+        if (correct) score++;
+
+        feedback.hidden = false;
+        feedback.textContent = correct
+          ? "Correct! " + [
+              "Data হলো পর্যবেক্ষণ, পরিমাপ বা রেকর্ড করা তথ্য।",
+              "একাধিক Order Record নিয়ে Order Dataset তৈরি হয়।",
+              "কী সমস্যা সমাধান করতে হবে তা আগে নির্ধারণ করতে হয়।",
+              "Customer behavior বিশ্লেষণ Data Analytics-এর বাস্তব ব্যবহার।",
+              "Profit হিসাব করতে Cost বিবেচনা করা হয়।",
+            ][index]
+          : "Incorrect. সঠিক উত্তর: " + question.querySelectorAll(".quiz-option span")[answers[index]].textContent;
+      });
+
+      if (result) {
+        result.textContent = `Your Score: ${score} / ${answers.length}`;
+      }
+    });
+  }
+
+  const assignment = document.querySelector("#chapter-assignment");
+
+  if (assignment) {
+    const checkboxes = assignment.querySelectorAll('input[type="checkbox"]');
+    const progressText = assignment.querySelector("#progress-text");
+    const progressFill = assignment.querySelector("#progress-fill");
+
+    const updateProgress = () => {
+      const completed = [...checkboxes].filter((item) => item.checked).length;
+      const percentage = Math.round((completed / checkboxes.length) * 100);
+
+      if (progressText) progressText.textContent = `${percentage}%`;
+      if (progressFill) progressFill.style.width = `${percentage}%`;
+    };
+
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener("change", updateProgress);
+    });
+
+    const copyButton = assignment.querySelector("#copy-assignment");
+    const copyStatus = assignment.querySelector("#copy-status");
+
+    copyButton?.addEventListener("click", async () => {
+      const checklist = [...assignment.querySelectorAll(".assignment-item")]
+        .map((item) => {
+          const checkbox = item.querySelector("input");
+          return `${checkbox?.checked ? "[x]" : "[ ]"} ${item.textContent?.trim()}`;
+        })
+        .join("\n");
+
+      try {
+        await navigator.clipboard.writeText(
+          "My First Data Analytics Report\n\n" + checklist
+        );
+
+        if (copyStatus) copyStatus.textContent = "Checklist copied!";
+      } catch {
+        if (copyStatus) copyStatus.textContent = "Copy unavailable. Please copy manually.";
+      }
+    });
+  }
+</script>
