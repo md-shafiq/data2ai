@@ -1,0 +1,59 @@
+
+---
+import BookLayout from "../../../layouts/BookLayout.astro";
+---
+
+<BookLayout title="Part 1 — Foundations">
+  <article class="space-y-8">
+    <header class="rounded-2xl bg-gradient-to-r from-blue-950 to-indigo-800 p-8 text-white">
+      <p class="text-sm font-semibold uppercase tracking-widest text-blue-200">
+        DATA TO CAREER · PART 01
+      </p>
+      <h1 class="mt-4 text-4xl font-bold">
+        Foundations of Data Analytics
+      </h1>
+      <p class="mt-4 max-w-2xl leading-8 text-blue-100">
+        Build a strong foundation in data, analytics, and problem-solving.
+        Start your journey from understanding data to becoming a professional
+        data and AI engineer.
+      </p>
+    </header>
+
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold">Welcome to Part 1</h2>
+      <p class="leading-8 text-gray-700">
+        Every successful data professional begins with a clear understanding
+        of data. Before learning advanced tools, programming, or artificial
+        intelligence, you need to understand what data is, why it matters,
+        and how organizations use it to make better decisions.
+      </p>
+      <p class="leading-8 text-gray-700">
+        In this part, you will develop the essential knowledge required for
+        your journey into Data Analytics and the wider world of data and AI.
+      </p>
+    </section>
+
+    <section class="rounded-xl border p-6 space-y-4">
+      <h2 class="text-2xl font-bold">Chapter 1 — Introduction</h2>
+      <p class="leading-7 text-gray-600">
+        What is Data? Introduction to Data Analytics.
+      </p>
+      <a
+        href={`${import.meta.env.BASE_URL}/part/foundations/chapter-01/`}
+        class="inline-block rounded-lg bg-blue-700 px-6 py-3 font-semibold text-white hover:bg-blue-800"
+      >
+        Start Chapter 1 →
+      </a>
+    </section>
+
+    <section class="rounded-xl bg-gray-50 p-6">
+      <h2 class="text-xl font-bold">Your learning goals</h2>
+      <ul class="mt-4 list-disc space-y-2 pl-6 text-gray-700">
+        <li>Understand the meaning and importance of data.</li>
+        <li>Learn how data analytics supports business decisions.</li>
+        <li>Develop analytical thinking and problem-solving skills.</li>
+        <li>Prepare for more advanced data and AI topics.</li>
+      </ul>
+    </section>
+  </article>
+</BookLayout>
