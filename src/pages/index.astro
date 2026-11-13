@@ -1,16 +1,72 @@
 ---
+import BookLayout from "../layouts/BookLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BookLayout title="Home">
+
+  <section class="rounded-2xl bg-blue-950 p-8 text-white">
+    <p class="mb-3 text-sm uppercase tracking-widest text-blue-300">
+      The Complete Practical Career Guide
+    </p>
+
+    <h1 class="mb-5 text-4xl font-bold">
+      DATA TO CAREER
+    </h1>
+
+    <h2 class="mb-5 text-2xl">
+      Data Analytics থেকে AI Engineering
+    </h2>
+
+    <p class="max-w-2xl leading-8 text-blue-100">
+      A practical learning journey from beginner
+      to professional. Learn concepts, practice
+      real-world skills, build projects and prepare
+      for global technology careers.
+    </p>
+
+    <a href={`${import.meta.env.BASE_URL}part/`}
+       class="mt-7 inline-block rounded-lg bg-white
+              px-6 py-3 font-semibold text-blue-950">
+      Explore the Book
+    </a>
+  </section>
+
+  <section class="mt-10">
+    <h2 class="mb-4 text-2xl font-bold">
+      Welcome to Your Career Transformation
+    </h2>
+
+    <p class="leading-8 text-gray-600">
+      This book takes you through Data Analytics,
+      Analytics Engineering, Data Engineering,
+      Data Science, Machine Learning and AI Engineering.
+    </p>
+  </section>
+
+  <section class="mt-10">
+    <h2 class="mb-5 text-2xl font-bold">
+      Learning Journey
+    </h2>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      {[
+        "Data Foundations",
+        "Excel & SQL",
+        "Python & Data Analytics",
+        "Analytics Engineering",
+        "Data Engineering",
+        "Data Science",
+        "Machine Learning",
+        "AI Engineering"
+      ].map((item, index) => (
+        <div class="rounded-xl border bg-white p-5 shadow-sm">
+          <p class="text-sm text-blue-600">
+            STAGE {index + 1}
+          </p>
+          <h3 class="mt-2 font-semibold">{item}</h3>
+        </div>
+      ))}
+    </div>
+  </section>
+
+</BookLayout>

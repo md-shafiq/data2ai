@@ -1,0 +1,33 @@
+---
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+const { title = "DATA TO CAREER" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description"
+      content="Learn Data Analytics to AI Engineering." />
+    <title>{title} | DATA TO CAREER</title>
+  </head>
+
+  <body>
+    <Header />
+
+    <div class="mx-auto flex max-w-7xl flex-col lg:flex-row">
+      <Sidebar />
+
+      <main class="min-h-screen min-w-0 flex-1 p-6 lg:p-10">
+        <slot />
+      </main>
+    </div>
+
+    <Footer />
+  </body>
+</html>
